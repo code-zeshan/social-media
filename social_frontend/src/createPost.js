@@ -1,8 +1,10 @@
-import React, {useState} from "react";
-import axios from "axios";
-import { response } from "express";
 
-function createPost(){
+import axios from "axios";
+import { useState } from "react";
+
+
+
+function CreatePost(){
    const [newPost, setNewPost] = useState({
       title:"",
       content:"",
@@ -18,12 +20,15 @@ function createPost(){
       setNewPost({...newPost, file: event.target.files[0]});  
    };
 
-   const handlePostSubmit = () =>{
+   const handlePostSubmit = (event) =>{
+
+      event.preventDefault();
+      console.log("Submit Button Clicked!");
       const formData = new FormData();
       formData.append("title", newPost.title);
       formData.append("content", newPost.content);
       formData.append("file", newPost.file);
-   }
+   
 
    axios
          .post("http://localhost:5000/api/posts", formData)
@@ -31,7 +36,7 @@ function createPost(){
             setNewPost({title:"", content:"", file:null})
          })
          .catch((error)=>console.error("Error Creating Post:", error));
-
+      }
 
 
 return(
@@ -40,10 +45,10 @@ return(
       <input
          type="text"
          name="title"
-         palceholder="Title"
+         placeholder="Title"
          value={newPost.title}
          onChange={handleInputChange}
-      ></input>
+      />
          <textarea
          name = "content"
          placeholder="Content"
@@ -58,3 +63,5 @@ return(
 )
 
 };
+
+export default CreatePost

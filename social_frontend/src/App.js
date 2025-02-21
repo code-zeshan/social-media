@@ -1,4 +1,4 @@
-import react from "react"
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import Home from "./home.js"
 import CreatePost from "./createPost.js"
