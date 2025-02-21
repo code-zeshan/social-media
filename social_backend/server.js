@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-mongoose.connect('mongodb+srv://zeshancode:zeshancode@zeshancode.1u1ir.mongodb.net/Social-Media', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('YOUR MONGODB URL!', {useNewUrlParser: true, useUnifiedTopology: true})
 console.log("database connected!");
 
 
